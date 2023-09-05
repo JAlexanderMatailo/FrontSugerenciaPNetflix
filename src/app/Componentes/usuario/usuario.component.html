@@ -1,4 +1,4 @@
-<div class="content d-flex justify-content-center">
+<!-- <div class="content d-flex justify-content-center">
     <div class="row justify-content-center">
       <div class="col text-center">
             <h1>Formulario de Usuario</h1>
@@ -19,4 +19,76 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Tipo de Película</title>
+    <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Agrega tu archivo de hojas de estilo CSS personalizado si es necesario -->
+    
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Registrar Usuario</h2>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-floating mb-2 w-100 "> 
+                            <label for="nombreUsuario">Nombre de Usuario:</label>
+                            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" [(ngModel)]='usuario.nombre_Usuario' required>
+                        </div>
+                        <div class="form-floating mb-2 w-100 ">  
+                            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" [ngModel]='usuario.fecha_nacimiento' required>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="nombre_TipoPelicula">Genero de Peliculas:</label>
+                        <div class="col-md-5">
+                            <li *ngFor="let elemento of tiposP" [value]="tipoP.ID_TipoPelicula" >
+                                <input type="checkbox" [(ngModel)]="tipoP.ID_TipoPelicula" [checked]="">
+                                {{ elemento.nombre_TipoPelicula }}
+                                
+                            </li>
+
+                            <!-- <mat-select *ngFor="let elemento of tiposP" [(ngModel)]="tipoP.ID_TipoPelicula">
+                                <input type="checkbox"  >
+                                    {{ elemento.nombre_TipoPelicula }}
+                                
+                              </mat-select> -->
+                              
+                            <!-- <li *ngFor="let elemento of tiposP" [value]="">
+                                <input type="checkbox" [(ngModel)]="elemento.ID_tipoPelicula"> {{ elemento.nombre_TipoPelicula }}
+                              </li> -->
+
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    
+                    <div class="col-md-4">
+                        <div class="form-floating mb-2 w-100 ">
+                            <button type="submit" class="btn btn-primary" (click)="ingresarUsuario()" >Guardar</button>
+                        </div>
+                    </div>                    
+                    <div class="col-md-8">
+                        <div class="form-floating mb-2 w-100 ">
+                            <button type="submit" class="btn btn-primary" routerLink="/home" >Cancelar</button>
+                        </div>
+                    </div>                    
+                </div>
+     
+    </div>
+
+    <!-- Agrega los enlaces a los archivos JS de Bootstrap (jQuery y Popper.js) si es necesario -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

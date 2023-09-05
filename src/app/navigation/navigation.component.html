@@ -1,15 +1,4 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="/tipopelicula">TipoPelicula</a>
-      <a mat-list-item href="/pelicula">Pelicula</a>
-      <a mat-list-item href="/usuario">Usuario</a>
-    </mat-nav-list>
-  </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
@@ -22,6 +11,20 @@
       </button>
       <span>Netflix</span>
     </mat-toolbar>
-
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'navigation' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <span color="primary">Menu</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="/tipopelicula">TipoPelicula</a>
+      <a mat-list-item href="/pelicula">Pelicula</a>
+      <a mat-list-item href="/usuario">Usuario</a>
+    </mat-nav-list>
+  </mat-sidenav>
 </mat-sidenav-container> 
+

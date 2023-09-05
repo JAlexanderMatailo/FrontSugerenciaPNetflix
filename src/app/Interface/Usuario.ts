@@ -6,7 +6,7 @@ export interface Usuario{
 
 export interface TipoPelicula{
     ID_TipoPelicula? : number ;
-    nombre_TipoPelicula: string;
+    Nombre_TipoPelicula: string;
 }
 
 export interface Pelicula{

@@ -1,19 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments.development';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
   urlBase = environment.urlBase
-  controladorPersonas = 'TipoPelicula/'
+  controladorPersonas = 'ServicesP/'
 
   constructor(private http: HttpClient) { }
 
   /*Usuario*/
   postUsuario(datosCliente:any){
-
+    let header = new HttpHeaders()
+    .set('Type-content','aplication/json')
     return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroUsuario',datosCliente);
   }
 
@@ -21,15 +23,24 @@ export class ServiceService {
   
   /*TipoPelicula*/
   postTipoPelicula(datosCliente:any){
+    let header = new HttpHeaders()
+    .set('Type-content','aplication/json')
 
-    return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroUsuario',datosCliente);
+    return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroTipoPelicula',datosCliente);
+  }
+  
+  getTiposP():Observable<any>{
+    let header = new HttpHeaders()
+    .set('Type-content','aplication/json')
+    return this.http.get<any>(this.urlBase+this.controladorPersonas+'GetAllTipoPelicula');
   }
   /*FinTipoPelicula*/
   
   /*Pelicula*/
   postPelicula(datosCliente:any){
-
-    return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroUsuario',datosCliente);
+    let header = new HttpHeaders()
+    .set('Type-content','aplication/json')
+    return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroPelicula',datosCliente);
   }
   /*FinPelicula*/
 
