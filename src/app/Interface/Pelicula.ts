@@ -3,9 +3,9 @@
 export interface Pelicula{
     ID_Pelicula? : number ;
     nombre_pelicula: string;
-    duracion_peliucla: string;
+    duracion_pelicula: string;
     imagen : string;
-    tipos?: TipoPelicula[];
+    tipos_pelicula?: TipoPelicula[];
 }
 
 export interface TipoPelicula{

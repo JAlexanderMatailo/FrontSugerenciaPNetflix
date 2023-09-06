@@ -11,21 +11,53 @@
 <body>
     <div class="container mt-5">
         <h2>Ingresar Película</h2>
-        <form action="guardar_pelicula.php" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
+        <div class="row">
+            <div class="col-md-5">
+            <div class="form-floating mb-2 w-100 ">
                 <label for="nombrePelicula">Nombre de la Película:</label>
-                <input type="text" class="form-control" id="nombrePelicula" name="nombrePelicula" required>
+                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" [(ngModel)]='pelicula.nombre_pelicula' required>
             </div>
-            <div class="form-group">
+            <div class="form-floating mb-2 w-100 ">
                 <label for="duracion">Duración:</label>
-                <input type="text" class="form-control" id="duracion" name="duracion" required>
+                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" [(ngModel)]='pelicula.duracion_pelicula' required>
             </div>
             <div class="form-group">
                 <label for="imagen">Imagen:</label>
-                <input type="file" class="form-control-file" id="imagen" name="imagen" accept="image/*" required>
+                <input type="file" class="form-control-file" accept="image/*" (change)="onFileSelected($event)"required>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar Película</button>
-        </form>
+        </div>
+        <div class="col-md-5">
+            <label for="nombre_TipoPelicula">Genero de Peliculas:</label>
+            <div >
+                <mat-form-field>
+                    <mat-label>Generos</mat-label>
+                    <mat-select [(ngModel)]="isChecked"  [formControl]="tiposPel" multiple>
+                    <!-- <mat-select [(ngModel)]="usuario.tipos" [formControl]="tiposPel" multiple>  -->
+                         
+                        <mat-option *ngFor="let elemento of tiposP" [value]="elemento.id_TipoPelicula">
+                        {{elemento.nombre_TipoPelicula}}
+                        </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                
+            </div>
+        </div>
+        </div>
+            
+            <div class="row">
+                    
+                <div class="col-md-2">
+                    <div class="form-floating mb-2 w-100 ">
+                        <button type="submit" class="btn btn-primary" (click)="ingresarTiposPelicula()" >Guardar</button>
+                    </div>
+                </div>                    
+                <div class="col-md-8">
+                    <div class="form-floating mb-2 w-100 ">
+                        <button type="submit" class="btn btn-primary" routerLink="/home" >Cancelar</button>
+                    </div>
+                </div>                    
+            </div>
+        
     </div>
 
     <!-- Enlaces a los archivos JS de Bootstrap (jQuery y Popper.js) -->

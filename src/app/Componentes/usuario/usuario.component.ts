@@ -13,7 +13,7 @@ import { TipoPelicula } from 'src/app/Interface/TipoPelicula';
 
 export class UsuarioComponent {
   tiposPel = new FormControl('');
-public tiposP : any[]=[];
+  public tiposP : any[]=[];
 
 //listaDeGeneros: Genero[] = [];
 listGenero: TipoPeliculas[]=[];
@@ -26,12 +26,7 @@ isChecked: string = "";
     fecha_nacimiento: new Date(),
     tipos: [{ nombre_TipoPelicula: ""}] // Agrega un elemento inicial en la lista
   }
-
-  TipoPelicula: TipoPeliculas={
-    nombre_TipoPelicula: " "
-  }
   
-
   ngOnInit(): void {
     this.obtenerTiposPelicula();
   }
