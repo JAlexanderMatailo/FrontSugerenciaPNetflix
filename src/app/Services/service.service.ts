@@ -41,6 +41,15 @@ export class ServiceService {
     .set('Type-content','aplication/json')
     return this.http.post<any>(this.urlBase+this.controladorNetflix+'RegistroPelicula',datosCliente);
   }
+
+  getPeliculas():Observable<any>{
+    let header = new HttpHeaders()
+    .set('Type-content','aplication/json')
+    return this.http.get<any>(this.urlBase+this.controladorNetflix+'GetAllPeliculas');
+    
+  }
+
+
   /*FinPelicula*/
 
 

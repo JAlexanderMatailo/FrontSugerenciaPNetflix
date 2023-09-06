@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Películas</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Estilos CSS personalizados (opcional) -->
+</head>
+    <body>
+        <div class="container mt-5">
+            <div class="col-md-50">
+                <div class="container mt-5">
+                    <h2>Carrusel de Tarjetas</h2>
+                    <div id="cardCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let card of Peliscard; let i = index" [class.active]="i === 0">
+                        <div class="card">
+                            <img src="{{ card.imagen }}" class="card-img-top" alt="{{ card.nombre_pelicula }}">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ card.duracion_pelicula }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ card.tipos_pelicula }}</h6>
+                            <p class="card-text">{{ card.nombre_pelicula }}</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    <a class="carousel-control-prev" href="#cardCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#cardCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                    </div>
+                </div>
+            </div>
 
+                <div class="col-md-5">
+                        <h2>Ingresar Película</h2>
+                            <mat-grid-list rowHeight="75px">
+                                <mat-grid-tile class="col-md-8" *ngFor="let card of Peliscard">
+                                    <mat-card class="dashboard-card">
+                                        <mat-card-title>
+                                            {{card.nombre_pelicula}}
+                                            
+                                            </mat-card-title>
+                                    </mat-card>
+                                    <img mat-card-md-image src={{card.imagen}} >
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    
+                </div>
+            
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       <!-- <app-dashboard></app-dashboard> -->
+    </body>
+</html>

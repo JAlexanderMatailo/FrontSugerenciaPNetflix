@@ -52,10 +52,12 @@ export class PeliculaComponent {
      console.log("terceroN", this.pelicula.nombre_pelicula);
      console.log("Imagen", this.pelicula.imagen);
      console.log("tercero", this.pelicula.tipos_pelicula);
+     this.pelicula.imagen = this.selectedImage;
 
      if(this.pelicula.tipos_pelicula){
       this.usuarioService.postPelicula(this.pelicula).subscribe(resp =>{
         console.log("VARIABLES QUE LLEGAN: ", this.isChecked)
+        console.log("Loque llega:", this.pelicula);
         console.log(resp)
       })
      }
@@ -71,7 +73,7 @@ export class PeliculaComponent {
     )
   }
 
-  selectedImage: string | ArrayBuffer | null = null;
+  selectedImage: string = "";
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {

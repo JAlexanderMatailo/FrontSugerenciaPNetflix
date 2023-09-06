@@ -19,6 +19,10 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgIf, NgFor} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
+import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -31,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
     TipoPeliculaComponent,
     PeliculaComponent,
     HomeComponent,
-    NavigationComponent
+    NavigationComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     NgIf,
     NgFor,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
