@@ -12,15 +12,12 @@
 <body>
     <div class="container mt-5">
         <h2>Crear Nuevo Tipo de Película</h2>
-        <form>
-            <div class="form-group">
+            <div class="form-floating mb-2 w-100 ">
                 <label for="nombreTipoPelicula">Nombre del Tipo de Película:</label>
-                <input type="text" class="form-control" id="nombreTipoPelicula" name="nombreTipoPelicula" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
+                <input class="form-control" matInput placeholder="Nombres" type="text" [(ngModel)]='nombre_TipoP' required>
+              </div>
+            <button type="submit" class="btn btn-primary" (click)="ingresarTipos()">Guardar</button>
     </div>
-
     <!-- Agrega los enlaces a los archivos JS de Bootstrap (jQuery y Popper.js) si es necesario -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

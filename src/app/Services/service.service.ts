@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ServiceService {
   urlBase = environment.urlBase
-  controladorPersonas = 'ServicesP/'
+  controladorNetflix = 'ServicesP/'
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class ServiceService {
   postUsuario(datosCliente:any){
     let header = new HttpHeaders()
     .set('Type-content','aplication/json')
-    return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroUsuario',datosCliente);
+    return this.http.post<any>(this.urlBase+this.controladorNetflix+'RegistroUsuario',datosCliente);
   }
 
   /*FinUsuario*/
@@ -25,14 +25,13 @@ export class ServiceService {
   postTipoPelicula(datosCliente:any){
     let header = new HttpHeaders()
     .set('Type-content','aplication/json')
-
-    return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroTipoPelicula',datosCliente);
+    return this.http.post<any>(this.urlBase+this.controladorNetflix+'RegistroTipoPelicula',datosCliente);
   }
   
   getTiposP():Observable<any>{
     let header = new HttpHeaders()
     .set('Type-content','aplication/json')
-    return this.http.get<any>(this.urlBase+this.controladorPersonas+'GetAllTipoPelicula');
+    return this.http.get<any>(this.urlBase+this.controladorNetflix+'GetAllTipoPelicula');
   }
   /*FinTipoPelicula*/
   
@@ -40,7 +39,7 @@ export class ServiceService {
   postPelicula(datosCliente:any){
     let header = new HttpHeaders()
     .set('Type-content','aplication/json')
-    return this.http.post<any>(this.urlBase+this.controladorPersonas+'RegistroPelicula',datosCliente);
+    return this.http.post<any>(this.urlBase+this.controladorNetflix+'RegistroPelicula',datosCliente);
   }
   /*FinPelicula*/
 

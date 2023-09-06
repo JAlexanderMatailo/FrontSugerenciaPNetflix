@@ -48,23 +48,18 @@
                     </div>
                     <div class="col-md-5">
                         <label for="nombre_TipoPelicula">Genero de Peliculas:</label>
-                        <div class="col-md-5">
-                            <li *ngFor="let elemento of tiposP" [value]="tipoP.ID_TipoPelicula" >
-                                <input type="checkbox" [(ngModel)]="tipoP.ID_TipoPelicula" [checked]="">
-                                {{ elemento.nombre_TipoPelicula }}
-                                
-                            </li>
-
-                            <!-- <mat-select *ngFor="let elemento of tiposP" [(ngModel)]="tipoP.ID_TipoPelicula">
-                                <input type="checkbox"  >
-                                    {{ elemento.nombre_TipoPelicula }}
-                                
-                              </mat-select> -->
-                              
-                            <!-- <li *ngFor="let elemento of tiposP" [value]="">
-                                <input type="checkbox" [(ngModel)]="elemento.ID_tipoPelicula"> {{ elemento.nombre_TipoPelicula }}
-                              </li> -->
-
+                        <div >
+                            <mat-form-field>
+                                <mat-label>Generos</mat-label>
+                                <mat-select [(ngModel)]="isChecked"  [formControl]="tiposPel" multiple>
+                                <!-- <mat-select [(ngModel)]="usuario.tipos" [formControl]="tiposPel" multiple>  -->
+                                     
+                                    <mat-option *ngFor="let elemento of tiposP" [value]="elemento.id_TipoPelicula">
+                                    {{elemento.nombre_TipoPelicula}}
+                                    </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            
                         </div>
                     </div>
                     

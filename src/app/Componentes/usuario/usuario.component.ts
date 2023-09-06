@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { Usuario } from 'src/app/Interface/Usuario';
+import { Usuario, TipoPeliculas } from 'src/app/Interface/Usuario';
 import { ServiceService } from 'src/app/Services/service.service';
-import { TipoPelicula } from '../../Interface/Usuario';
+import { FormControl } from '@angular/forms';
+import { TipoPelicula } from 'src/app/Interface/TipoPelicula';
 
 @Component({
   selector: 'app-usuario',
@@ -11,18 +12,26 @@ import { TipoPelicula } from '../../Interface/Usuario';
 })
 
 export class UsuarioComponent {
+  tiposPel = new FormControl('');
 public tiposP : any[]=[];
 
+//listaDeGeneros: Genero[] = [];
+listGenero: TipoPeliculas[]=[];
+
+isChecked: string = "";
+
+
  usuario: Usuario= {
-    ID_Usuario:0,
     nombre_Usuario: "",
-    fecha_nacimiento: new Date()
+    fecha_nacimiento: new Date(),
+    tipos: [{ nombre_TipoPelicula: ""}] // Agrega un elemento inicial en la lista
   }
 
-  tipoP: TipoPelicula = {
-    ID_TipoPelicula: 0,
-    Nombre_TipoPelicula: ""
+  TipoPelicula: TipoPeliculas={
+    nombre_TipoPelicula: " "
   }
+  
+
   ngOnInit(): void {
     this.obtenerTiposPelicula();
   }
@@ -39,10 +48,28 @@ public tiposP : any[]=[];
     
   }
   ingresarUsuario(){
-    this.usuarioService.postUsuario(this.usuario).subscribe(resp =>{
-      console.log(resp)
-    })
-    this.limpiarCampos();
+      
+     var cadenas=this.isChecked.toString().split(",");
+     console.log("primero", cadenas);
+     for(var cadena of cadenas){
+      var cadenaO : TipoPelicula = {
+        iD_TipoPelicula : Number.parseInt(cadena) ,
+        nombre_TipoPelicula : ""
+      }; // Crear una nueva instancia de TipoPeliculas en cada iteración
+      console.log("segundo", cadenaO);
+      this.listGenero.push(cadenaO);// Agregar la instancia al nuevo array    
+     } // Asignar el nuevo array a this.listGenero
+     this.usuario.tipos = this.listGenero;
+     console.log("tercero", this.usuario.tipos);
+     if(this.usuario.tipos){
+      this.usuarioService.postUsuario(this.usuario).subscribe(resp =>{
+        //console.log("VARIABLES QUE LLEGAN: ", cadena)
+        console.log("VARIABLES QUE LLEGAN: ", this.isChecked)
+        console.log(resp)
+      })
+     }
+      
+      
   }
 
   obtenerTiposPelicula(){
@@ -51,10 +78,13 @@ public tiposP : any[]=[];
       console.log(resp)
       this.tiposP = resp
     }
-
     )
   }
+
+  
+
   limpiarCampos() {
     close();
   }
 }
+
